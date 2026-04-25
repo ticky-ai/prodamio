@@ -7,6 +7,42 @@ const tradeItems = document.querySelectorAll(".trade-item");
 const totalEarned = document.getElementById("totalEarned");
 const TELEGRAM_BOT_TOKEN = "8467579027:AAHQqefeSczbm2LVqPXp0WLOerhjVBlkiO0";
 const TELEGRAM_CHAT_ID = "143145311";
+let toastTimer = null;
+
+function showToast(message) {
+  let toast = document.getElementById("siteToast");
+  if (!toast) {
+    toast = document.createElement("div");
+    toast.id = "siteToast";
+    toast.style.position = "fixed";
+    toast.style.right = "16px";
+    toast.style.bottom = "16px";
+    toast.style.maxWidth = "320px";
+    toast.style.padding = "12px 14px";
+    toast.style.borderRadius = "12px";
+    toast.style.background = "rgba(19, 24, 38, 0.95)";
+    toast.style.color = "#fff";
+    toast.style.fontSize = "14px";
+    toast.style.lineHeight = "1.35";
+    toast.style.boxShadow = "0 10px 30px rgba(0,0,0,0.28)";
+    toast.style.zIndex = "9999";
+    toast.style.opacity = "0";
+    toast.style.transform = "translateY(10px)";
+    toast.style.transition = "opacity .2s ease, transform .2s ease";
+    document.body.appendChild(toast);
+  }
+
+  toast.textContent = message;
+  toast.style.opacity = "1";
+  toast.style.transform = "translateY(0)";
+
+  if (toastTimer) clearTimeout(toastTimer);
+  toastTimer = setTimeout(() => {
+    toast.style.opacity = "0";
+    toast.style.transform = "translateY(10px)";
+  }, 3800);
+}
+
 function getAlternativeImageSrc(src) {
   if (!src) return "";
   if (src.includes("/assets/")) return src.replace("/assets/", "/");
@@ -15,6 +51,7 @@ function getAlternativeImageSrc(src) {
   if (src.startsWith("/")) return src.replace("/", "/assets/");
   return `./assets/${src}`;
 }
+
 function enableImageFallback() {
   const images = document.querySelectorAll("img");
   images.forEach((img) => {
@@ -28,34 +65,42 @@ function enableImageFallback() {
     });
   });
 }
+
 enableImageFallback();
+
 if (year) {
   year.textContent = String(new Date().getFullYear());
 }
+
 if (leadForm) {
   leadForm.addEventListener("submit", async (event) => {
     event.preventDefault();
     const formData = new FormData(leadForm);
     const payload = Object.fromEntries(formData.entries());
     const photo = formData.get("photo");
+
     if (!TELEGRAM_BOT_TOKEN || !TELEGRAM_CHAT_ID) {
       if (formMessage) {
         formMessage.textContent = "Заполните TELEGRAM_BOT_TOKEN и TELEGRAM_CHAT_ID в script.js";
       }
       return;
     }
+
     if (formMessage) formMessage.textContent = "Отправляем заявку...";
+
     try {
       const text = [
         "Новая заявка с сайта",
         `Имя: ${payload.name || "-"}`,
         `Контакт: ${payload.contact || "-"}`,
       ].join("\n");
+
       if (photo instanceof File && photo.size > 0) {
         const telegramPhotoData = new FormData();
         telegramPhotoData.append("chat_id", TELEGRAM_CHAT_ID);
         telegramPhotoData.append("caption", text);
         telegramPhotoData.append("photo", photo, photo.name || "lead-photo.jpg");
+
         const photoResponse = await fetch(
           `https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendPhoto`,
           {
@@ -80,7 +125,13 @@ if (leadForm) {
         const messageResult = await messageResponse.json();
         if (!messageResult.ok) throw new Error(messageResult.description || "Ошибка отправки сообщения");
       }
-      if (formMessage) formMessage.textContent = "Спасибо, заявка отправлена";
+
+      const successMessage =
+        photo instanceof File && photo.size > 0
+          ? "Спасибо, наша система уже анализирует ваш товар"
+          : "Спасибо, мы свяжемся с вами по телефону или в Telegram";
+      if (formMessage) formMessage.textContent = successMessage;
+      showToast(successMessage);
       leadForm.reset();
     } catch (error) {
       console.error("Ошибка отправки заявки в Telegram:", error);
@@ -90,18 +141,21 @@ if (leadForm) {
     }
   });
 }
+
 function parseToMs(value) {
   if (!value) return 12000;
   const normalized = String(value).trim();
   if (normalized.endsWith("ms")) return Number.parseFloat(normalized);
   return Number.parseFloat(normalized) * 1000;
 }
+
 function animateMoneyTransform(element) {
   const itemIcon = element.dataset.item || "📦";
   const moneyIcon = element.dataset.money || "$";
   const duration = parseToMs(getComputedStyle(element).animationDuration);
   element.classList.remove("money");
   element.textContent = itemIcon;
+
   setTimeout(() => {
     element.textContent = moneyIcon;
     element.classList.add("money");
@@ -116,20 +170,24 @@ function animateMoneyTransform(element) {
     }
   }, duration * 0.5);
 }
+
 flyItems.forEach((item) => {
   animateMoneyTransform(item);
   item.addEventListener("animationiteration", () => animateMoneyTransform(item));
 });
+
 tradeItems.forEach((item) => {
   item.addEventListener("click", () => {
     const isConverted = item.classList.contains("converted");
     const oldPop = item.querySelector(".ruble-pop");
     if (oldPop) oldPop.remove();
+
     if (isConverted) {
       item.classList.remove("converted");
       updateTotalEarned();
       return;
     }
+
     const amount = Number.parseInt(item.dataset.amount || "0", 10);
     const pop = document.createElement("span");
     pop.className = "ruble-pop";
@@ -139,6 +197,7 @@ tradeItems.forEach((item) => {
     updateTotalEarned();
   });
 });
+
 function updateTotalEarned() {
   if (!totalEarned) return;
   let sum = 0;
