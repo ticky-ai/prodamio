@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 300" fill="none">
+  <rect width="520" height="300" rx="24" fill="#EFFFE8"/>
+  <rect x="54" y="94" width="178" height="132" rx="16" fill="#fff"/>
+  <rect x="248" y="116" width="218" height="110" rx="16" fill="#fff"/>
+  <text x="110" y="172" font-size="52">=æ</text>
+  <path d="M220 160h52" stroke="#6B7BFF" stroke-width="10" stroke-linecap="round"/>
+  <path d="M286 160l-19-14v28l19-14z" fill="#6B7BFF"/>
+  <text x="328" y="179" font-size="52">=°</text>
+</svg>

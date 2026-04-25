@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 420" fill="none">
+  <rect width="640" height="420" rx="28" fill="#F0F4FF"/>
+  <rect x="44" y="68" width="170" height="96" rx="18" fill="#fff"/>
+  <rect x="236" y="68" width="170" height="96" rx="18" fill="#fff"/>
+  <rect x="428" y="68" width="170" height="96" rx="18" fill="#fff"/>
+  <text x="106" y="126" font-size="42">>å</text>
+  <text x="302" y="126" font-size="42">=¬</text>
+  <text x="494" y="126" font-size="42">>þ</text>
+  <path d="M128 190V240H511V190" stroke="#6176FF" stroke-width="9" stroke-linecap="round"/>
+  <rect x="220" y="270" width="200" height="96" rx="20" fill="#73E84F"/>
+  <text x="304" y="331" font-size="52" fill="#12300E">½</text>
+  <circle cx="170" cy="308" r="20" fill="#8453FF"/>
+  <circle cx="469" cy="309" r="22" fill="#5D6FFF"/>
+  <text x="159" y="317" font-size="20">=¸</text>
+  <text x="458" y="318" font-size="20">>™</text>
+</svg>

@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 300" fill="none">
+  <rect width="520" height="300" rx="24" fill="#F3ECFF"/>
+  <rect x="58" y="92" width="184" height="140" rx="18" fill="#fff"/>
+  <rect x="266" y="92" width="196" height="140" rx="18" fill="#fff"/>
+  <text x="122" y="174" font-size="52">=ñ</text>
+  <text x="336" y="174" font-size="52">=µ</text>
+  <rect x="222" y="130" width="72" height="60" rx="14" fill="#8A5CFF"/>
+  <text x="246" y="168" font-size="28" fill="#fff">½</text>
+</svg>

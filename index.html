@@ -1,0 +1,386 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, viewport-fit=cover, maximum-scale=5"
+    />
+    <title>Я продам — вещи в деньги</title>
+    <meta
+      name="description"
+      content="Я продам — яркий и удобный сервис: фотографируем, оцениваем и продаём ваши вещи. Вы получаете деньги без лишней суеты."
+    />
+    <meta property="og:title" content="Я продам — вещи в деньги" />
+    <meta
+      property="og:description"
+      content="Продажа вещей под ключ: от фото до выплаты. С прогнозом ИИ и прозрачными статусами."
+    />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://example.com/" />
+    <meta property="og:image" content="https://example.com/assets/og-placeholder.jpg" />
+    <link rel="icon" href="./assets/favicon-placeholder.svg" type="image/svg+xml" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <div class="bg-fly" aria-hidden="true">
+      <span class="fly" style="--x:7%;--d:0s;--t:13s" data-item="👟" data-money="$">👟</span>
+      <span class="fly" style="--x:18%;--d:1.4s;--t:12s" data-item="💻" data-money="$">💻</span>
+      <span class="fly" style="--x:29%;--d:2.8s;--t:11s" data-item="👜" data-money="$">👜</span>
+      <span class="fly" style="--x:44%;--d:0.8s;--t:14s" data-item="🧸" data-money="$">🧸</span>
+      <span class="fly" style="--x:58%;--d:3.2s;--t:12.5s" data-item="🚲" data-money="$">🚲</span>
+      <span class="fly" style="--x:71%;--d:2.2s;--t:13.5s" data-item="🧥" data-money="$">🧥</span>
+      <span class="fly" style="--x:85%;--d:1s;--t:15s" data-item="📱" data-money="$">📱</span>
+    </div>
+
+    <header class="container header">
+      <a class="brand" href="#hero" aria-label="Я продам">
+        <span class="brand-ya">Я</span>
+        <span class="brand-pill">продам!</span>
+      </a>
+      <nav class="nav">
+        <a href="#services">Услуги</a>
+        <a href="#cabinet">Личный кабинет</a>
+        <a href="#cases">Кейсы</a>
+        <a href="#ai-evaluation">ИИ-аналитика</a>
+        <a href="#form">Заявка</a>
+      </nav>
+      <div class="header-actions">
+        <a class="header-tel" href="tel:+74993017718">+7 499 301-77-18</a>
+        <a class="btn" href="#form">Оценить вещи</a>
+      </div>
+    </header>
+
+    <main>
+      <section id="hero" class="container hero">
+        <div>
+          <p class="tag">Современный сервис на основе <span class="text-ai">ИИ-оценки</span> для занятых людей</p>
+          <h1>Превратим ваши ненужные вещи в деньги</h1>
+          <p class="lead">
+            Фотографируем, оцениваем, продаём и перечисляем деньги. Вы не тратите время на звонки,
+            торг и встречи.
+          </p>
+          <div class="actions">
+            <a class="btn" href="#form">Оценить вещи</a>
+          </div>
+        </div>
+        <div class="hero-art card">
+          <div class="interactive-hero" aria-label="Интерактив: превратите вещи в рубли">
+            <p class="interactive-title">Кликните на вещи и превратите их в деньги</p>
+            <div class="item-scene">
+              <button class="trade-item" type="button" data-name="Коляска" data-amount="34500" aria-label="Коляска" style="--x:12%;--y:38%;--r:-10deg">
+                <img class="item-icon-img" src="./assets/stroller-icon.svg" alt="Коляска" />
+                <span class="item-label">Коляска</span>
+              </button>
+              <button class="trade-item" type="button" data-name="Ролики" data-amount="18000" aria-label="Ролики" style="--x:38%;--y:7%;--r:7deg">
+                <span class="item-emoji">🛼</span>
+                <span class="item-label">Ролики</span>
+              </button>
+              <button class="trade-item" type="button" data-name="iMac" data-amount="60000" aria-label="iMac" style="--x:67%;--y:18%;--r:-4deg">
+                <span class="item-emoji">🖥️</span>
+                <span class="item-label">iMac</span>
+              </button>
+              <button class="trade-item" type="button" data-name="Футболка" data-amount="39000" aria-label="Футболка" style="--x:22%;--y:62%;--r:8deg">
+                <span class="item-emoji">👕</span>
+                <span class="item-label">Футболка</span>
+              </button>
+              <button class="trade-item" type="button" data-name="Сумка" data-amount="190000" aria-label="Сумка" style="--x:58%;--y:52%;--r:-7deg">
+                <span class="item-emoji">👜</span>
+                <span class="item-label">Сумка</span>
+              </button>
+            </div>
+          </div>
+          <div class="hero-total">
+            <span>Итого заработано</span>
+            <strong id="totalEarned">0 ₽</strong>
+          </div>
+        </div>
+      </section>
+
+      <section id="services" class="container section">
+        <h2>Три типа услуг</h2>
+        <div class="grid g3 services-row">
+          <div class="service-col">
+            <article class="card service">
+              <h3>Вещь остаётся у вас</h3>
+              <p>Мы приезжаем, фотографируем, публикуем и ведём переговоры. Вы только передаёте вещь покупателю.</p>
+              <span class="commission">Наша комиссия 15%</span>
+            </article>
+          </div>
+          <div class="service-col service-col--popular">
+            <span class="popular-badge">Популярный</span>
+            <article class="card service main-service">
+              <h3>Мы забираем вещи</h3>
+              <p>Полностью берём процесс на себя: фото, объявления, встречи, сделка и переводим Вам деньги.</p>
+              <span class="commission">Наша комиссия 25%</span>
+            </article>
+          </div>
+          <div class="service-col">
+            <article class="card service">
+              <h3>Моментальный выкуп</h3>
+              <p>Для ликвидных товаров можем предложить быстрый выкуп и выплату сразу.</p>
+              <span class="commission">Деньги сразу</span>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="container section">
+        <h2>Как работает сервис</h2>
+        <div class="grid g4">
+          <article class="card step-card"><span class="step-icon">📝</span><h3>1. Заявка</h3><p>Оставляете контакты и категорию вещей.</p></article>
+          <article class="card step-card"><span class="step-icon">✨</span><h3>2. Прогноз</h3><p>Получаете предварительную <span class="text-ai">ИИ-оценку</span>.</p></article>
+          <article class="card step-card"><span class="step-icon">💬</span><h3>3. Продажа</h3><p>Мы берём коммуникацию с покупателями на себя.</p></article>
+          <article class="card step-card"><span class="step-icon">💸</span><h3>4. Выплата</h3><p>Продали — перечислили деньги в течение 24 часов.</p></article>
+        </div>
+      </section>
+
+      <section id="cabinet" class="container section">
+        <h2>Всё видно в личном кабинете</h2>
+        <div class="card cabinet">
+          <div class="cabinet-layout">
+            <aside class="cab-sidebar">
+              <strong>Мой кабинет</strong>
+              <span class="cab-nav">Мои товары</span>
+              <span class="cab-nav">Сообщения</span>
+              <span class="cab-nav">Выплаты</span>
+              <span class="cab-nav">Статистика</span>
+            </aside>
+            <div class="cab-content">
+              <div class="cabinet-head">
+                <strong>Список товаров</strong>
+                <span>Обновлено только что</span>
+              </div>
+              <div class="cabinet-grid">
+                <article class="cab-item">
+                  <h3>Apple iMac 24</h3>
+                  <p>Прогноз: 55 000 — 65 000 ₽</p>
+                  <span class="state state-sale">В продаже</span>
+                </article>
+                <article class="cab-item">
+                  <h3>Balenciaga T-shirt</h3>
+                  <p>Прогноз: 36 000 — 42 000 ₽</p>
+                  <span class="state state-done">Реализован</span>
+                </article>
+                <article class="cab-item">
+                  <h3>Часы Hublot</h3>
+                  <p>Прогноз: 210 000 — 260 000 ₽</p>
+                  <span class="state state-accept">На этапе приёмки</span>
+                </article>
+                <article class="cab-item">
+                  <h3>Коляска YoYo</h3>
+                  <p>Прогноз: 31 000 — 38 000 ₽</p>
+                  <span class="state state-sale">В продаже</span>
+                </article>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="cases" class="container section">
+        <h2>Наглядные примеры успешных сделок</h2>
+        <div class="grid g4">
+          <article class="card case">
+            <div class="case-client">
+              <div class="case-head">
+                <span class="avatar-photo" aria-hidden="true">АИ</span>
+                <div class="case-name-block">
+                  <h3>Артём И.</h3>
+                  <p class="case-city">Москва, ЖК «Слава»</p>
+                </div>
+              </div>
+              <p>Запрос: Продать iMac без звонков и встреч с покупателями.</p>
+            </div>
+            <div class="case-product">
+              <div class="product-thumb">
+                <img
+                  class="product-photo"
+                  src="./assets/case-product-imac.png"
+                  width="64"
+                  height="64"
+                  alt="Apple iMac 24"
+                  loading="lazy"
+                />
+              </div>
+              <span>Товар: Apple iMac 24</span>
+            </div>
+            <strong>Срок реализации — 3 дня</strong>
+            <p class="case-detail">Выставили за 62 000 ₽, продали за 58 000 ₽.</p>
+          </article>
+          <article class="card case">
+            <div class="case-client">
+              <div class="case-head">
+                <span class="avatar-photo" aria-hidden="true">ЕН</span>
+                <div class="case-name-block">
+                  <h3>Екатерина Н.</h3>
+                  <p class="case-city">ЖК «Soho+Noho»</p>
+                </div>
+              </div>
+              <p>Запрос: Разобрать гардероб и продать брендовые вещи без переписок.</p>
+            </div>
+            <div class="case-product">
+              <div class="product-thumb">
+                <img
+                  class="product-photo"
+                  src="./assets/case-product-balenciaga.png"
+                  width="64"
+                  height="64"
+                  alt="Balenciaga T-shirt"
+                  loading="lazy"
+                />
+              </div>
+              <span>Товар: Balenciaga T-shirt</span>
+            </div>
+            <strong>Срок реализации — 5 дней</strong>
+            <p class="case-detail">Сделали фото, описание и сами вели диалог с покупателями.</p>
+          </article>
+          <article class="card case">
+            <div class="case-client">
+              <div class="case-head">
+                <span class="avatar-photo" aria-hidden="true">МС</span>
+                <div class="case-name-block">
+                  <h3>Михаил С.</h3>
+                  <p class="case-city">Красногорск</p>
+                </div>
+              </div>
+              <p>Запрос: Продать часы безопасно, без торга в мессенджерах и лишних встреч.</p>
+            </div>
+            <div class="case-product">
+              <div class="product-thumb">
+                <img
+                  class="product-photo"
+                  src="./assets/case-product-hublot.png"
+                  width="64"
+                  height="64"
+                  alt="Hublot"
+                  loading="lazy"
+                />
+              </div>
+              <span>Товар: Hublot</span>
+            </div>
+            <strong>Срок реализации — 8 дней</strong>
+            <p class="case-detail">Покупателя проверили, встречу организовали сами.</p>
+          </article>
+          <article class="card case">
+            <div class="case-client">
+              <div class="case-head">
+                <span class="avatar-photo" aria-hidden="true">ОВ</span>
+                <div class="case-name-block">
+                  <h3>Ольга В.</h3>
+                  <p class="case-city">Балашиха</p>
+                </div>
+              </div>
+              <p>Запрос: Освободить место дома и продать коляску без самостоятельного размещения объявлений.</p>
+            </div>
+            <div class="case-product">
+              <div class="product-thumb">
+                <img
+                  class="product-photo"
+                  src="./assets/case-product-yoyo.png"
+                  width="64"
+                  height="64"
+                  alt="Коляска YOYO"
+                  loading="lazy"
+                />
+              </div>
+              <span>Товар: Коляска YOYO</span>
+            </div>
+            <strong>Срок реализации — 3 дня</strong>
+            <p class="case-detail">Продали после обновления фото и цены.</p>
+          </article>
+        </div>
+        <p class="small-note">
+          Примеры демонстрационные. Срок и итоговая цена зависят от состояния товара, спроса и выбранного формата продажи.
+        </p>
+      </section>
+
+      <section id="ai-evaluation" class="container section">
+        <div class="card ai ai-modern">
+          <div class="ai-text">
+            <h2>ИИ помогает оценить шансы продажи</h2>
+            <p>
+              Система анализирует товар, категорию, состояние и похожие объявления. Даём
+              ориентировочный диапазон цены и предварительный прогноз срока продажи.
+            </p>
+            <p class="small-note">Это не 100% гарантия, а честный рабочий ориентир перед стартом.</p>
+            <div class="ai-badges">
+              <span>Категория</span>
+              <span>Состояние</span>
+              <span>Спрос</span>
+              <span>Аналоги</span>
+            </div>
+          </div>
+          <div class="ai-chart" aria-label="Показатели AI-оценки">
+            <h3>AI-метрики по товару</h3>
+            <div class="metric">
+              <span>Срок реализации</span>
+              <strong>~ 9 дней</strong>
+            </div>
+            <div class="metric">
+              <span>Ликвидность</span>
+              <strong>7 / 10</strong>
+            </div>
+            <div class="metric">
+              <span>Вероятность продажи</span>
+              <strong>87%</strong>
+              <div class="bar"><i style="--w:87%"></i></div>
+            </div>
+            <div class="metric">
+              <span>Средний ценник</span>
+              <strong>28 000 ₽</strong>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="form" class="container section">
+        <div class="card form-wrap">
+          <div>
+            <h2>Получите предварительную оценку</h2>
+            <p>Заполните форму — мы свяжемся и предложим лучший формат продажи.</p>
+          </div>
+          <form id="leadForm" class="lead-form">
+            <label>Имя<input type="text" name="name" required placeholder="Ваше имя" /></label>
+            <label>Телефон / Telegram<input type="text" name="contact" required placeholder="+7... или @username" /></label>
+            <label>Фото товара для оценки<input type="file" name="photo" accept="image/*" /></label>
+            <button class="btn" type="submit">Получить оценку</button>
+            <p id="formMessage" class="small-note" role="status" aria-live="polite"></p>
+          </form>
+        </div>
+      </section>
+    </main>
+
+    <footer class="container footer">
+      <div class="footer-body">
+        <div class="footer-block">
+          <p class="footer-title">Сервис</p>
+          <p>© <span id="year"></span> Я продам — вещи в деньги</p>
+        </div>
+        <div class="footer-block">
+          <p class="footer-title">Контакты</p>
+          <p>
+            <a href="tel:+74993017718">+7 499 301-77-18</a>
+          </p>
+          <p>
+            <a href="mailto:info@yaprodam.ru">info@yaprodam.ru</a>
+          </p>
+        </div>
+        <div class="footer-block">
+          <p class="footer-title">Реквизиты</p>
+          <p>ИП Ботоев Алан Валерьевич</p>
+          <p>ОГРНИП 314784714900599</p>
+          <p>г. Москва, Ленинградский проспект, д. 36, стр. 36</p>
+        </div>
+      </div>
+    </footer>
+
+    <script src="./script.js"></script>
+  </body>
+</html>

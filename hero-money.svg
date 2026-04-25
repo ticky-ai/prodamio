@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 460" fill="none">
+  <defs>
+    <linearGradient id="g1" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#E7ECFF"/>
+      <stop offset="1" stop-color="#EFFFF0"/>
+    </linearGradient>
+    <linearGradient id="g2" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#6DE24A"/>
+      <stop offset="1" stop-color="#89F36A"/>
+    </linearGradient>
+  </defs>
+  <rect width="720" height="460" rx="32" fill="url(#g1)"/>
+  <rect x="44" y="66" width="142" height="98" rx="20" fill="#fff"/>
+  <text x="83" y="126" font-size="44">=»</text>
+  <rect x="236" y="66" width="142" height="98" rx="20" fill="#fff"/>
+  <text x="275" y="126" font-size="44">=\</text>
+  <rect x="428" y="66" width="142" height="98" rx="20" fill="#fff"/>
+  <text x="467" y="126" font-size="44">=²</text>
+  <path d="M110 196V250H606V196" stroke="#6277FF" stroke-width="10" stroke-linecap="round"/>
+  <path d="M170 250C170 294 206 330 250 330H467C512 330 548 294 548 250" stroke="#6277FF" stroke-width="10" stroke-linecap="round"/>
+  <rect x="227" y="344" width="266" height="76" rx="18" fill="url(#g2)"/>
+  <text x="328" y="394" font-size="44" fill="#173212" font-weight="700">½</text>
+  <circle cx="131" cy="287" r="23" fill="#8F57FF"/>
+  <text x="117" y="297" font-size="24">=¸</text>
+  <circle cx="582" cy="298" r="25" fill="#5D6FFF"/>
+  <text x="568" y="308" font-size="24">>™</text>
+</svg>
