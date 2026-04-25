@@ -1,6 +1,3 @@
-Да, конечно — вот полный script.js целиком, просто вставь как есть:
-
-
 const leadForm = document.getElementById("leadForm");
 const formMessage = document.getElementById("formMessage");
 const year = document.getElementById("year");
