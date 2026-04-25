@@ -5,21 +5,68 @@ const flyItems = document.querySelectorAll(".fly");
 const flyContainer = document.querySelector(".bg-fly");
 const tradeItems = document.querySelectorAll(".trade-item");
 const totalEarned = document.getElementById("totalEarned");
-
+const TELEGRAM_BOT_TOKEN = "8467579027:AAHQqefeSczbm2LVqPXp0WLOerhjVBlkiO0";
+const TELEGRAM_CHAT_ID = "143145311";
 if (year) {
   year.textContent = String(new Date().getFullYear());
 }
 
 if (leadForm) {
-  leadForm.addEventListener("submit", (event) => {
+  leadForm.addEventListener("submit", async (event) => {
     event.preventDefault();
-    const payload = Object.fromEntries(new FormData(leadForm).entries());
-    // Заглушка: здесь можно подключить Telegram Bot API, CRM, email-сервис или backend endpoint.
-    console.log("Заявка:", payload);
-    if (formMessage) {
-      formMessage.textContent = "Спасибо, мы свяжемся с вами";
+    const formData = new FormData(leadForm);
+    const payload = Object.fromEntries(formData.entries());
+    const photo = formData.get("photo");
+
+    if (!8467579027:AAHQqefeSczbm2LVqPXp0WLOerhjVBlkiO0 || !143145311) {
+      if (formMessage) {
+        formMessage.textContent = "Заполните TELEGRAM_BOT_TOKEN и TELEGRAM_CHAT_ID в script.js";
+      }
+      return;
     }
-    leadForm.reset();
+
+    if (formMessage) formMessage.textContent = "Отправляем заявку...";
+
+    try {
+      const text = [
+        "Новая заявка с сайта",
+        `Имя: ${payload.name || "-"}`,
+        `Контакт: ${payload.contact || "-"}`,
+      ].join("\n");
+
+      if (photo instanceof File && photo.size > 0) {
+        const telegramPhotoData = new FormData();
+        telegramPhotoData.append("chat_id", TELEGRAM_CHAT_ID);
+        telegramPhotoData.append("caption", text);
+        telegramPhotoData.append("photo", photo, photo.name || "lead-photo.jpg");
+
+        const photoResponse = await fetch(
+          `https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendPhoto`,
+          { method: "POST", body: telegramPhotoData },
+        );
+        const photoResult = await photoResponse.json();
+        if (!photoResult.ok) throw new Error(photoResult.description || "Ошибка отправки фото");
+      } else {
+        const messageResponse = await fetch(
+          `https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage`,
+          {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ chat_id: TELEGRAM_CHAT_ID, text }),
+          },
+        );
+        const messageResult = await messageResponse.json();
+        if (!messageResult.ok) throw new Error(messageResult.description || "Ошибка отправки сообщения");
+      }
+
+      if (formMessage) formMessage.textContent = "Спасибо, заявка отправлена";
+      leadForm.reset();
+    } catch (error) {
+      console.error("Ошибка отправки заявки в Telegram:", error);
+      if (formMessage) {
+        formMessage.textContent = "Не удалось отправить заявку. Проверьте токен/чат и попробуйте снова.";
+      }
+    }
   });
 }
 
